@@ -1,0 +1,15 @@
+monstermanul project
+1.dev-env
+	1.webstorm
+	2.github for windows
+	3.npm(resposity --tabao) cnpm
+	4.bower.json
+2.project tools
+	1.vue-cli
+	2.webpack + 代码热替换
+		cnpm i webpack --watch & node build/dev-server.js
+	3.bower offical suggest that Prefer modules from npm over bower
+	4.jquery
+	5.bootstrap
+	6.sass
+3.suppose
