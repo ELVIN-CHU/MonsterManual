@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="col-xs-12 col-sm-6 col-md-8">
     <img src="./assets/mhx.png">
     <hello></hello>
   </div>
@@ -16,11 +16,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+  @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
