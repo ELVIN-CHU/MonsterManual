@@ -1,14 +1,17 @@
 <template>
   <div>
-    <p>{{ msg }}</p>
+    <h1>{{ msg }}</h1>
+    <button id="test" class="btn btn-danger btn-lg">test</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
-  props: {
-    'msg': ''
+  name: 'switch',
+  data () {
+    return {
+      msg: 'banner'
+    }
   }
 }
 </script>

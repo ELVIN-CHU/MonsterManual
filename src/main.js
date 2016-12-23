@@ -8,7 +8,10 @@ import $ from 'jquery'
 new Vue({
   el: '#app',
   template: '<App/>',
-  components: { App }
+  components: { App },
+  data: {
+    btns: []
+  }
 })
 
 $(function () {
