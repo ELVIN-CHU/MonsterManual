@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import $ from 'jquery'
 
 /* eslint-disable no-new */
 new Vue({
@@ -10,13 +9,8 @@ new Vue({
   template: '<App/>',
   components: { App },
   data: {
-    btns: []
+    // 将在各处使用该事件中心
+    // 组件通过它来通信
+    eventHub: new Vue()
   }
-})
-
-$(function () {
-  // alert('import jquery successly!')
-  $('#test').click(function () {
-    alert('test click')
-  })
 })

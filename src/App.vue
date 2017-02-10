@@ -1,32 +1,56 @@
 <template>
-  <div id="app">
-    <banner></banner>
-    <hello :msg='sign'></hello>
-    <btn v-for='data in datas' :id='data.id' :text="data.val" :color="data.color" :size='data.size'></btn>
+  <div id="app" class="container">
+    <customnav style="display:none"/>
+    <br/>
+    <transition name="component-fade" mode="out-in">
+      <component v-bind:is="view"></component>
+    </transition>
+    <br/>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
-import banner from './components/Banner'
+import index from './components/index'
+import monster from './components/monster'
 import btn from './components/btn'
+import customnav from './components/customnav'
+import $ from 'jquery'
 
 export default {
   name: 'app',
   components: {
-    banner,
-    Hello,
+    monster,
+    index,
+    customnav,
     btn
   },
   data () {
     return {
-      datas: [
-        { id: 1, val: 'START', color: 'danger', size: 'lg' },
-        { id: 2, val: 'CONTINUE', color: 'danger', size: 'lg' },
-        { id: 3, val: 'OPTIONS', color: 'danger' },
-        { id: 4, val: 'DOWNLOAD' }
-      ],
-      sign: 'Monster Manual For Cross!'
+      view: 'index'
+    }
+  },
+  // Todos
+  // ...
+  created: function () {
+    this.$root.eventHub.$on('btnclick', this.btnclick)
+  },
+  // 最好在组件销毁前
+  // 清除事件监听
+  beforeDestroy: function () {
+    this.$root.eventHub.$off('btnclick', this.btnclick)
+  },
+  methods: {
+    btnclick: function (btnid) {
+      if (btnid === 'btn1') {
+        this.view = 'monster'
+        $('#home').show()
+        $('#nav').show()
+      }
+      if (btnid === 'home') {
+        this.view = 'index'
+        $('#home').hide()
+        $('#nav').hide()
+      }
     }
   }
 }
@@ -42,4 +66,12 @@ export default {
   margin-top: 60px;
   width:auto;
 }
+
+  .component-fade-enter-active, .component-fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .component-fade-enter, .component-fade-leave-active {
+    opacity: 0;
+  }
+
 </style>

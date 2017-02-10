@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <button :id="id" class="btn" :class="cssClass">{{ text }}</button>
-  </div>
+  <button @click="click()" :id="id" class="btn" :class="cssClass">{{ text }}</button>
 </template>
 
 <script>
@@ -23,6 +21,13 @@ export default {
         return `btn-${color} btn-${this.size}`
       }
       return `btn-${color}`
+    }
+  },
+  methods: {
+    click: function (id) {
+      // 通过this.$root.eventHub获取此对象
+      // 调用$emit 方法
+      this.$root.eventHub.$emit('btnclick', this.id)
     }
   }
 }
